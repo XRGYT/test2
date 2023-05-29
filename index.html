@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>News Website</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>News Website</h1>
+    
+    <div id="newsContainer"></div>
+    
+    <div id="loginForm">
+      <h2>Admin Login</h2>
+      <form id="adminLoginForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username">
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+        
+        <button type="submit">Log in</button>
+      </form>
+    </div>
+    
+    <div id="newsForm" style="display: none;">
+      <h2>Add News Article</h2>
+      <form id="articleForm">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title">
+        
+        <label for="content">Content:</label>
+        <textarea id="content" name="content"></textarea>
+        
+        <label for="image">Image:</label>
+        <input type="file" id="image" name="image">
+        
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+</html>
