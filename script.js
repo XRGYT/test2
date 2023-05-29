@@ -27,16 +27,10 @@ articleForm.addEventListener('submit', e => {
   const content = e.target.elements.content.value;
   const image = e.target.elements.image.files[0];
 
-  // Perform article submission
-  submitArticle(title, content, image)
-    .then(() => {
-      e.target.reset();
-      // Refresh the news articles after submission
-      fetchNewsArticles();
-    })
-    .catch(error => {
-      console.error('Article submission error:', error);
-    });
+  // Display the new article immediately
+  displayNewArticle(title, content, image);
+
+  e.target.reset();
 });
 
 function authenticateAdmin(username, password) {
@@ -51,13 +45,24 @@ function authenticateAdmin(username, password) {
   });
 }
 
-function submitArticle(title, content, image) {
-    // Perform article submission logic (e.g., send request to server to save article)
-    return new Promise((resolve, reject) => {
-      // Simulating successful submission for demonstration purposes
-      setTimeout(() => {
-        resolve();
-      }, 100);
-    });
+function displayNewArticle(title, content, image) {
+  const articleElement = document.createElement('div');
+  articleElement.classList.add('article');
+  
+  const titleElement = document.createElement('h2');
+  titleElement.textContent = title;
+  
+  const contentElement = document.createElement('p');
+  contentElement.textContent = content;
+  
+  articleElement.appendChild(titleElement);
+  articleElement.appendChild(contentElement);
+  
+  if (image) {
+    const imageElement = document.createElement('img');
+    imageElement.src = URL.createObjectURL(image);
+    articleElement.appendChild(imageElement);
   }
   
+  newsContainer.prepend(articleElement);
+}
